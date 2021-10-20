@@ -9,9 +9,8 @@ from djecom.utils import unique_slug_generator
 
 
 CATEGORY_CHOICES = (
-    ('S', 'Shirt'),
-    ('SW', 'Sport wear'),
-    ('OW', 'Outwear')
+    ('L', 'Laptop'),
+    ('M', 'Mobile')
 )
 
 LABEL_CHOICES = (
@@ -149,7 +148,6 @@ class Address(models.Model):
 
 
 class Payment(models.Model):
-    stripe_charge_id = models.CharField(max_length=50)
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, blank=True, null=True)
     amount = models.FloatField()
@@ -161,7 +159,7 @@ class Payment(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    stripe_customer_id = models.CharField(max_length=50, blank=True, null=True)
+    customer_id = models.CharField(max_length=50, blank=True, null=True)
     one_click_purchasing = models.BooleanField(default=False)
 
     def __str__(self):
