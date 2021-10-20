@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <main>
+    <div class="container">
+
+    <div class="table-responsive text-nowrap">
+    <h2>Successful Order Summary For {{ request.user }}</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Total Items </th>
+            <th scope="col">Ordered Date </th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Referene Code</th>
+         
+        </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>
+                   
+                    {% for orderitem in order.items.all %}
+
+                     {{ orderitem.quantity }} x {{ orderitem.item }}&nbsp;
+
+                    {% endfor %} 
+
+
+            </td>
+
+
+            <td>
+                {{ order.ordered_date }}
+            </td>
+       
+            <td>{{ order.get_total }}</td>
+            <td>{{ order.ref_code }}</td>
+
+            <tr>
+                <td colspan='5'>You order number is <strong>{{ order.id}}</strong></td>
+            </tr>
+            
+    
+            {% endfor %}
+            <tr>
+                <td colspan="5">
+                <a class='btn btn-primary float-right' href='/'>Continue shopping</a>
+                </td>
+            </tr>
+    
+            </tbody>
+        </table>
+    
+        </div>
+    
+        </div>
+      </main>
+    
+    {% endblock content %}

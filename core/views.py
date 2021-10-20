@@ -22,7 +22,7 @@ import random
 import string
 import stripe
 #stripe.api_key = settings.STRIPE_SECRET_KEY
-stripe.api_key = 'sk_test_YvRLxFpoheL9o83dVzvHJUKP00TXosKCun'
+# stripe.api_key = 'sk_test_YvRLxFpoheL9o83dVzvHJUKP00TXosKCun'
 
 
 # Create your views here.
@@ -409,8 +409,8 @@ class PaymentMethod(View):
             order.ref_code = create_ref_code()
             order.save()
 
-            messages.success(self.request, "Your order was successful!")
-            return redirect("/")
+            messages.success(self.request, "Your order is successful!")
+            return redirect("/success")
 
         # except stripe.error.CardError as e:
         #     body = e.json_body
@@ -455,6 +455,19 @@ class PaymentMethod(View):
 
         messages.warning(self.request, "Invalid data received")
         return redirect("payment")
+
+class SuccessView(View):
+    def get(self, *args, **kwargs):
+
+        orders = Order.objects.filter(
+            user=self.request.user, ordered=True)
+
+        context = {
+            "orders": orders,
+
+
+        }
+        return render(self.request, "success.html", context)
 
 
 def product(request):

@@ -13,6 +13,7 @@ from .views import HomeView,\
     CategoryListView,\
     RequestRefundView,\
     ProfileView,\
+    SuccessView,\
     product
 from django.contrib.auth import views as auth_views
 
@@ -31,6 +32,7 @@ urlpatterns = [
     path('add-coupon/', AddCouponView.as_view(), name='add-coupon'),
     path('request-refund/<str:ref_code>', RequestRefundView.as_view(), name='request-refund'),
     path('profile/', ProfileView.as_view(), name='profile'),
+    path('success', SuccessView.as_view(), name='success'),
 
 ]
 

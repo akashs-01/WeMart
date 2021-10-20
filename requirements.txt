@@ -16,3 +16,4 @@ requests-oauthlib
 sqlparse
 stripe
 urllib3
+pymysql
