@@ -1,12 +1,12 @@
 {% load cart_template_tags %}
-
+{% load static %}
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container">
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" href="{% url 'home' %}" >
-        <strong class="blue-text"> WeMart </strong>
+        <img src="{% static '../media/logo.png' %}" height="28px" width="78px">
       </a>
 
       <!-- Collapse -->
@@ -27,6 +27,10 @@
           <li class="nav-item">
             <a class="nav-link waves-effect" href="/checkout">
             Checkout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="/profile">
+            Orders</a>
           </li>
         </ul>
 

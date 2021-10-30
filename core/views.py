@@ -49,7 +49,6 @@ class HomeView(ListView):
         # And so on for more models
         return context
 
-
 class CategoryListView(ListView):
     model = Item
     template_name = 'categorylist.html'
@@ -538,7 +537,7 @@ class RequestRefundView(View):
                 return redirect("request-refund", ref_code=ref_code)
 
 
-class ProfileView(View):
+class ProfileView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
 
         orders = Order.objects.filter(

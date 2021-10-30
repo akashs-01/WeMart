@@ -23,27 +23,26 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-
-            {% for list in object_list %}
-
+            <!-- {% for list in object_list %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'category-list' list.category %}">{{ list.get_category_display }}</a>
             </li>
 
-            {% endfor %}
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link" href="{% url 'category-list' 'SW' %} ">Sport wears</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--              <a class="nav-link" href="{% url 'category-list' 'OW' %}">Outwears</a>-->
-<!--            </li>-->
+            {% endfor %} -->
+           <li class="nav-item">
+              <a class="nav-link" href="{% url 'category-list' 'L' %} ">Laptop</a>
+           </li>
+            <li class="nav-item">
+             <a class="nav-link" href="{% url 'category-list' 'M' %}">Mobile</a>
+           </li>
 
           </ul>
           <!-- Links -->
 
           <form class="form-inline">
             <div class="md-form my-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <input class="form-control mr-sm-2" type="text" name="name" placeholder="Search" aria-label="Search">
+
             </div>
           </form>
         </div>
